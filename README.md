@@ -124,46 +124,105 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ````
 
 Enter mounted disk
-````shel
+````shell
 arch-chroot /mnt
 ````
 
 Enter hostname. Change name for an hostname
-````shel
+````shell
 echo name > /etc/hostname
 ````
 
 Set up root password
-````shel
+````shell
 passwd
 ````
 
 Set up Grub Grub bootloader
-````shel
+````shell
 pacman -S grub efibootmgr networkmanager
 ````
-````shel
+````shell
 systemctl enable NetworkManager
 ````
 
-````shel
+````shell
 mkdir /boot/efi
 ````
 
 mount efi partition
-````shel
+````shell
 mount /dev/nvme0n1p1 /boot/efi
 ````
 
 install grub
-````shel
+````shell
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 ````
 ````shell
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
+update packages - warning
+````shell
+pacman -Syu
+````
 
+````shell
+pacman -S sudo
+````
+
+Create a user
+````shell
+useradd -m username
+````
+Set the password the new username
+````shell
+passwd username
+````
+
+````shell
+visudo /etc/sudoers
+````
+Add username ALL=(ALL) ALL below root ALL=(ALL) ALL and save.
+
+### Desktop Environment
+````shell
+pacman -Syuu
+````
+
+install x server
+````shell
+pacman -S xorg
+````
+
+````shell
+pacman -S plasma
+````
+
+````shell
+pacman -S plasma-wayland-session
+````
+
+Minimal
+````shell
+pacman -S konsole sddm plasma-nm plasma-pa dolphin kdeplasma-addons kde-gtk-config
+````
+
+Optionnals
+````shell
+pacman -S kde-applications
+````
+
+````shell
+systemctl enable sddm.service
+````
+
+````shell
+systemctl enable NetworkManager.service
+````
+
+### IMPORTANT
 Exit arch-root, root should become red
 ````shell
 exit
@@ -175,4 +234,30 @@ umount -R /mnt
 
 ````shell
 reboot
+````
+> Reboot from the disk!
+
+
+## Packages
+````shell
+sudo pacman -S git neofetch
+````
+
+Install snap 
+````shell
+git clone https://aur.archlinux.org/snapd.git
+cd snapd
+makepkg -si
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+````
+
+Install Brave
+````shell
+sudo snap install brave
+````
+
+Install Discord
+````shell
+sudo snap install discord
 ````
