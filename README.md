@@ -115,7 +115,7 @@ mount /dev/nvme0n1p2 /mnt
 
 Install necessary packages using pacstrap. vim and nano are both included here
 ````shell
-pacstrap /mnt base base-devel linux linux-firmware vim nano
+pacstrap /mnt base base-devel linux linux-firmware linux-headers vim nano
 ````
 
 Generate a fstab file
