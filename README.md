@@ -215,11 +215,20 @@ Optionnals
 ````shell
 pacman -S kde-applications
 ````
+NVIDIA
+````shell
+pacman -S nvidia nvidia-settings nvidia-utils
+````
 
 ````shell
 systemctl enable sddm.service
 ````
 
+````shell
+systemctl enable NetworkManager.service
+````
+
+NVIDIA
 ````shell
 systemctl enable NetworkManager.service
 ````
