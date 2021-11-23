@@ -158,6 +158,8 @@ mount /dev/nvme0n1p1 /boot/efi
 install grub
 ````shell
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+OR
+grub-install /dev/sda
 ````
 ````shell
 grub-mkconfig -o /boot/grub/grub.cfg
