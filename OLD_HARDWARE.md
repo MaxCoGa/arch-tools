@@ -1,24 +1,24 @@
-cfdisk /dev/sda
-mkfs.ext4 /dev/sda1
-mkfs.ext4 /dev/sda2
-mount /dev/sda2 /mnt
-mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
-lsblk
-pacstrap /mnt base base-devel linux linux-firmware vim
-genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt /bin/bash
-pacman -S networkmanager grub
-systemctl enable NetworkManager
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-passwd
-vim /etc/locale.gen
-/en_US (then uncomment en_US.UTF-8 + ISO)
-locale-gen
-vim /etc/locale.conf (LANG=en-US.UTF-8)
-vim /etc/hostname (type in the name of you PC)
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
-exit
-umount -R /mnt
-reboot
+cfdisk /dev/sda <br>
+mkfs.ext4 /dev/sda1 <br>
+mkfs.ext4 /dev/sda2<br>
+mount /dev/sda2 /mnt<br>
+mkdir /mnt/boot<br>
+mount /dev/sda1 /mnt/boot<br>
+lsblk<br>
+pacstrap /mnt base base-devel linux linux-firmware vim<br>
+genfstab -U /mnt >> /mnt/etc/fstab<br>
+arch-chroot /mnt /bin/bash<br>
+pacman -S networkmanager grub<br>
+systemctl enable NetworkManager<br>
+grub-install /dev/sda<br>
+grub-mkconfig -o /boot/grub/grub.cfg<br>
+passwd<br>
+vim /etc/locale.gen<br>
+/en_US (then uncomment en_US.UTF-8 + ISO)<br>
+locale-gen<br>
+vim /etc/locale.conf (LANG=en-US.UTF-8)<br>
+vim /etc/hostname (type in the name of you PC)<br>
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime<br>
+exit<br>
+umount -R /mnt<br>
+reboot<br>
