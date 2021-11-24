@@ -3,8 +3,8 @@
 EDIT: /etc/pacman.conf <br>
 
 Change: <br>
-# [multilib] <br>
-# Include = /etc/pacman.d/mirrorlist <br>
+/# [multilib] <br>
+/# Include = /etc/pacman.d/mirrorlist <br>
 [multilib] <br>
 Include = /etc/pacman.d/mirrorlist <br>
 
